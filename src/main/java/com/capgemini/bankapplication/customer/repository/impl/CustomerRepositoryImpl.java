@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -21,27 +23,43 @@ public class CustomerRepositoryImpl implements CustomerRepository {
 	private JdbcTemplate jdbcTemplate;
 
 	@Override
-	public Customer authenticate(Customer customer) {
+	public Customer authenticate(Customer customer) throws DataAccessException {
+		try {
 		return jdbcTemplate.queryForObject(
 				"SELECT * FROM customer, bankAccount where customer.accountId = bankAccount.accountId and customerEmail = ? AND customerPassword = ?",
 				new Object[] { customer.getCustomerEmail(), customer.getCustomerPassword() }, new CustomerRowMapper());
+		} catch(DataAccessException e) {
+			e.initCause(new EmptyResultDataAccessException("not found",1));
+			throw e;
+		}
+		
 	}
 
 	@Override
-	public Customer updateProfile(Customer customer) {
-		int count = jdbcTemplate.update(
+	public Customer updateProfile(Customer customer) throws DataAccessException   {
+		
+		
+		try{int count = jdbcTemplate.update(
 				"update customer set customerName= ? ,customerPassword= ? ,customerEmail= ? ,customerAddress= ? , customerDateOfBirth= ? where customerId= ? ",
 				new Object[] { customer.getCustomerName(), customer.getCustomerPassword(), customer.getCustomerEmail(),
 						customer.getCustomerAddress(), customer.getCustomerDateOfBirth(), customer.getCustomerId() });
 		return count != 0 ? customer : null;
+		
+	}catch (DataAccessException e) {
+		e.initCause(new EmptyResultDataAccessException(1));
+		throw e;}
 	}
 
 	@Override
-	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) {
-		int count = jdbcTemplate.update(
+	public boolean updatePassword(Customer customer, String oldPassword, String newPassword) throws DataAccessException {
+		try {int count = jdbcTemplate.update(
 				" update customer set customerPassword= ? WHERE customerId = ? AND customerPassword = ?",
 				new Object[] { newPassword, customer.getCustomerId(), oldPassword });
 		return count != 0;
+	}catch (DataAccessException e) {
+		e.initCause(new EmptyResultDataAccessException(1));
+		throw e;
+	}
 	}
 
 	private class CustomerRowMapper implements RowMapper<Customer> {

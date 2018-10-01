@@ -7,7 +7,7 @@
 <html>
 <head>
 <link href="css/header.css" rel="stylesheet">
-</head>
+</head bgcolor="pink">
 <body>
 <div class="container">
   <img src="/images/sbi.jpg" align="left"  width="200" height="100">

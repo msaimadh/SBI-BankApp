@@ -7,7 +7,7 @@
 <%@ include file="home.jsp" %>
 <title>AccountBalance</title>
 </head>
-<body bgcolour="CornFlowerBlue" style="text-align:left">
+<body bgcolour="pink" style="text-align:left">
 <br><br><br><br><br>
 <h1>Your current account balance is:  ${sessionScope.customer.customerAccount.accountBalance}</h1>		
 <%-- <h1>Your current account balance is:  ${requestScope.balance}</h1> --%>
