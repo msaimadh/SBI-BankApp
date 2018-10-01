@@ -5,9 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@ include file="header.jsp" %>
 </head>
-<body bgcolor="pink">
-<%@include file="header.jsp" %>
-<h1>Amount Transferred Successfully!!!</h1>
+<body style="text-align:center" >
+<br><br><br><br><br>
+<h1>Please enable cookies</h1>
 </body>
 </html>

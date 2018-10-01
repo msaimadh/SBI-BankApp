@@ -5,9 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@ include file="home.jsp" %>
 </head>
 <body>
-<%@include file="header.jsp" %>
-<h1>Password Changed Successfully!!!</h1>
+<br><br><br><br><br>
+<h4  style="text-align:center" >You have updated your details successfully!!</h4>
 </body>
 </html>

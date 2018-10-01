@@ -5,9 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<%@ include file="home.jsp" %>
 </head>
-<body bgcolor="pink">
-<%@include file="header.jsp"%>
-<h1>Your Details Has Been Updated Successfully!!</h1>
+<body>
+<br><br><br><br><br>
+<h4  style="text-align:center">You have entered incorrect username or password credentials..</h4>
 </body>
 </html>

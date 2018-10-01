@@ -1,33 +1,39 @@
 package com.capgemini.bankapplication.entities;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Customer {
-	private int customerId;
-	 private String customerName;
-	 private String password;
-	 private String email;
-	 private String address;
-	 private LocalDate dateOfBirth;
-	private BankAccount account;
+
+
+
+	private long customerId;
+	private String customerName;
+	private String customerPassword;
+	private String customerEmail;
+	private String customerAddress;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate customerDateOfBirth;
+	private BankAccount customerAccount ;
 	public Customer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Customer(int customerId, String customerName, String password, String email, String address,
-			LocalDate dateOfBirth, BankAccount account) {
+	public Customer(long customerId, String customerName, String customerPassword, String customerEmail,
+			String customerAddress, LocalDate customerDateOfBirth, BankAccount customerAccount) {
 		super();
 		this.customerId = customerId;
 		this.customerName = customerName;
-		this.password = password;
-		this.email = email;
-		this.address = address;
-		this.dateOfBirth = dateOfBirth;
-		this.account = account;
+		this.customerPassword = customerPassword;
+		this.customerEmail = customerEmail;
+		this.customerAddress = customerAddress;
+		this.customerDateOfBirth = customerDateOfBirth;
+		this.customerAccount = customerAccount;
 	}
-	public int getCustomerId() {
+	public long getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 	public String getCustomerName() {
@@ -36,43 +42,41 @@ public class Customer {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
-	public String getPassword() {
-		return password;
+	public String getCustomerPassword() {
+		return customerPassword;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCustomerPassword(String customerPassword) {
+		this.customerPassword = customerPassword;
 	}
-	public String getEmail() {
-		return email;
+	public String getCustomerEmail() {
+		return customerEmail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCustomerEmail(String customerEmail) {
+		this.customerEmail = customerEmail;
 	}
-	public String getAddress() {
-		return address;
+	public String getCustomerAddress() {
+		return customerAddress;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCustomerAddress(String customerAddress) {
+		this.customerAddress = customerAddress;
 	}
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
+	public LocalDate getCustomerDateOfBirth() {
+		return customerDateOfBirth;
 	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setCustomerDateOfBirth(LocalDate customerDateOfBirth) {
+		this.customerDateOfBirth = customerDateOfBirth;
 	}
-	public BankAccount getAccount() {
-		return account;
+	public BankAccount getCustomerAccount() {
+		return customerAccount;
 	}
-	public void setAccount(BankAccount account) {
-		this.account = account;
+	public void setCustomerAccount(BankAccount customerAccount) {
+		this.customerAccount = customerAccount;
 	}
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", password=" + password
-				+ ", email=" + email + ", address=" + address + ", dateOfBirth=" + dateOfBirth + ", account=" + account
-				+ "]";
+		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", customerPassword="
+				+ customerPassword + ", customerEmail=" + customerEmail + ", customerAddress=" + customerAddress
+				+ ", customerDateOfBirth=" + customerDateOfBirth + ", customerAccount=" + customerAccount + "]";
 	}
-	
-	 
-	
-}
+		
+}	
